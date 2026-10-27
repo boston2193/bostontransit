@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Boston Transit to Scale</title>
+  <meta name="description" content="How long is an MBTA Green Line Type 10 Supercar? Compare it, and every other Boston transit vehicle, to scale against trains, planes and landmarks.">
+  <meta name="theme-color" content="#00843d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='9' width='28' height='13' rx='3' fill='%2300843d'/%3E%3Crect x='5' y='12' width='22' height='4' fill='%23d6ecdd'/%3E%3Ccircle cx='9' cy='25' r='2.5' fill='%23222'/%3E%3Ccircle cx='23' cy='25' r='2.5' fill='%23222'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Overpass:wght@400;600;700&family=Overpass+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">MBTA rolling stock · drawn to one scale</div>
+    <h1>Boston Transit to Scale</h1>
+    <div class="lines" aria-hidden="true"><i style="background:#00843d"></i><i style="background:#da291c"></i><i style="background:#ed8b00"></i><i style="background:#003da5"></i><i style="background:#7c878e"></i><i style="background:#80276c"></i></div>
+    <nav class="modes" aria-label="Mode">
+      <a href="#compare" id="tab-compare" class="mode" aria-current="page">
+        <span class="mode-k">Mode 1</span><span class="mode-t">How long is a Type 10?</span>
+      </a>
+      <a href="#sandbox" id="tab-sandbox" class="mode">
+        <span class="mode-k">Mode 2</span><span class="mode-t">Transit sandbox</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===================== MODE 1: TYPE 10 COMPARE ===================== -->
+  <main id="mode-compare" class="mode-panel">
+    <p class="lede">One Green Line Type 10 “Supercar” runs <strong>113 ft 8 in</strong> end to end. Step through the list to line it up against trains, buses, planes and landmarks on the same scale. Tall things like monuments are laid on their side.</p>
+
+    <section class="sheet" aria-label="Type 10 comparison">
+      <div class="titleblock">
+        <div><span class="tb-label">Type 10</span><span class="tb-val g">113′ 8″</span></div>
+        <div><span class="tb-label" id="cmpLabel">Compared</span><span class="tb-val c" id="cmpLen">—</span></div>
+        <div class="tb-wide"><span class="tb-label">Verdict</span><span class="verdict" id="verdict">—</span></div>
+      </div>
+      <div class="drawing"><svg id="cmpDraw" viewBox="0 0 1000 330" role="img" aria-label="Side-view drawing comparing a Type 10 with the selected item"></svg></div>
+      <div class="controls">
+        <div class="nav">
+          <button class="navbtn" id="prev" aria-label="Previous comparison">← Prev</button>
+          <span class="count" id="count">1/1</span>
+          <button class="navbtn" id="next" aria-label="Next comparison">Next →</button>
+          <span class="stepper" id="cmpStepper" hidden><button id="cmpMinus" aria-label="Fewer cars">−</button><span id="cmpCars"></span><button id="cmpPlus" aria-label="More cars">+</button></span>
+        </div>
+        <p class="note" id="itemNote"></p>
+      </div>
+    </section>
+
+    <section class="groups" id="groups" aria-label="Pick a comparison"></section>
+
+    <section class="sheet lineup" aria-label="Full lineup">
+      <h2>The whole lineup</h2>
+      <p class="note">Bars share one scale at each item's usual length. The dashed line marks one Type 10. Tap a row to compare it above.</p>
+      <div id="cmpLineup"></div>
+    </section>
+  </main>
+
+  <!-- ===================== MODE 2: SANDBOX ===================== -->
+  <main id="mode-sandbox" class="mode-panel" hidden>
+    <p class="lede">Every T line, the Commuter Rail, trains from other cities and some familiar objects, all on one ruler. Load a preset or build your own yard: add tracks, swap what's on them, and change how many cars each train runs.</p>
+
+    <section class="sheet" aria-label="Scale drawing">
+      <div class="toolbar">
+        <div class="presets"><span class="lbl">Presets</span><span id="presets" class="presets"></span></div>
+        <div class="toggles">
+          <label><input type="checkbox" id="refToggle" checked> Type 10 marker</label>
+          <div class="seg" role="group" aria-label="Units"><button id="uFt" aria-pressed="true">ft</button><button id="uM" aria-pressed="false">m</button></div>
+        </div>
+      </div>
+      <div class="drawing"><svg id="sbDraw" viewBox="0 0 1000 300" role="img" aria-label="Side-view scale drawing of the vehicles on your tracks"></svg></div>
+      <div class="summary" id="summary"></div>
+    </section>
+
+    <section class="sheet bench" aria-label="Tracks">
+      <div class="bench-head"><h2>Your tracks</h2><span class="lbl" id="trackCount"></span></div>
+      <div id="rows"></div>
+      <div class="add">
+        <select id="addSel" aria-label="Vehicle or object to add"></select>
+        <button class="btn" id="addBtn">Add track</button>
+        <button class="btn ghost" id="clearBtn">Clear all</button>
+      </div>
+      <div class="notes" id="notes"></div>
+    </section>
+
+    <section class="sheet lineup" aria-label="Catalog">
+      <h2>Everything in the catalog</h2>
+      <p class="note">Shown at the usual train length. Dashed line is one Type 10. Tap any row to add it as a new track.</p>
+      <div id="sbLineup"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Lengths are to scale and heights roughly so; shapes are simplified silhouettes. Items marked ≈ are typical sizes that vary by model or individual.</span>
+    <span>Coupler gaps are ignored, so a train's length is cars × car length (Commuter Rail adds the locomotive). Use ← → keys to step through Mode 1.</span>
+    <span>Vehicle lengths from Wikipedia's MBTA rolling-stock articles. Not affiliated with the MBTA.</span>
+  </footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
