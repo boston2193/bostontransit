@@ -17,6 +17,8 @@
   --dark: #2a332e;
   --glass: #bcd3e0;
   --paper: #ffffff;
+  --body: #e6eae7;
+  --wind: #33495a;
 
   --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --f-body: "Overpass", "Segoe UI", system-ui, sans-serif;
@@ -28,14 +30,14 @@
   :root:not([data-theme="light"]) {
     --bg: #101613; --sheet: #151d19; --ink: #e3ebe6; --muted: #93a39a; --rule: #2c3832; --grid: #1c2621;
     --accent: #3db46b; --accent-soft: #1c3a28; --cmp: #86aee3; --cmp-soft: #1d2c40; --ref: #3db46b;
-    --metal: #5f6c66; --dark: #0b0f0d; --glass: #3e5868; --paper: #26302b;
+    --metal: #5f6c66; --dark: #0b0f0d; --glass: #3e5868; --paper: #26302b; --body: #8e9993; --wind: #0e1a22;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #101613; --sheet: #151d19; --ink: #e3ebe6; --muted: #93a39a; --rule: #2c3832; --grid: #1c2621;
   --accent: #3db46b; --accent-soft: #1c3a28; --cmp: #86aee3; --cmp-soft: #1d2c40; --ref: #3db46b;
-  --metal: #5f6c66; --dark: #0b0f0d; --glass: #3e5868; --paper: #26302b;
+  --metal: #5f6c66; --dark: #0b0f0d; --glass: #3e5868; --paper: #26302b; --body: #8e9993; --wind: #0e1a22;
   color-scheme: dark;
 }
 
